@@ -23,7 +23,7 @@ public class ObjectDrag : MonoBehaviour
     {
         isDragging = false;
     }
-
+    //miwito rau
     void OnMouseDrag()
     {
         if (isDragging)
