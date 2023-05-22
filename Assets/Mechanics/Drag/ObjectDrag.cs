@@ -22,8 +22,13 @@ public class ObjectDrag : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
+        if (!connect)
+        { 
+            GetComponent<Rigidbody>().isKinematic = false;
+            Neighbor.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
     }
-    //miwito rau
     void OnMouseDrag()
     {
         if (isDragging)
