@@ -43,8 +43,7 @@ public class ObjectDrag : MonoBehaviour
             gameObject.transform.position= newPosition;
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             GameManager.Instance.Drag = true;
-            Min_X = P.transform.position.x;
-            Max_X = Min_X + Add_Max_X;
+            Increase_Next_Point_Limit();
         }
 
     }
@@ -56,12 +55,11 @@ public class ObjectDrag : MonoBehaviour
     }
     public void Increase_Next_Point_Limit()
     {
-        
-        float Neighbor_Y = Neighbor.transform.localPosition.y;
-        if (this.transform.position.y!= Neighbor_Y + Add_Max_Y&& this.transform.position.y< Neighbor_Y)
-        Min_Y = this.transform.position.y;
-        Max_Y = Neighbor_Y + Add_Max_Y;
-       
+
+        Min_X = P.transform.position.x;
+        Max_X = Min_X + Add_Max_X;
+        Min_Y = P.transform.position.y - Add_Max_Y;
+        Max_Y = Min_Y + 2 * Add_Max_Y;
     }
     public void Die()
     {

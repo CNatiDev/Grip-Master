@@ -8,12 +8,10 @@ public class Catcher : MonoBehaviour
         if (other.gameObject.CompareTag("L_hand"))
         {
             Connect_Hands(GameManager.Instance.L_Hand, GameManager.Instance.R_Hand);
-            GameManager.Instance.R_Hand.GetComponent<ObjectDrag>().Increase_Next_Point_Limit();
         }
         else if(other.gameObject.CompareTag("R_hand"))
         {
             Connect_Hands(GameManager.Instance.R_Hand, GameManager.Instance.L_Hand);
-            GameManager.Instance.L_Hand.GetComponent<ObjectDrag>().Increase_Next_Point_Limit();
         }
     }
     void Connect_Hands(GameObject Hand, GameObject Neighbor)
