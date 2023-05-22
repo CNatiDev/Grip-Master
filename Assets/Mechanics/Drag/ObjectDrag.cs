@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using UnityEngine.UI;
 public class ObjectDrag : MonoBehaviour
 {
     [HideInInspector]
@@ -13,8 +14,10 @@ public class ObjectDrag : MonoBehaviour
     public float Max_X, Min_X;
     public float Add_Max_Y;
     public ObjectDrag Neighbor;
+    public UnityEvent FinalEvent;
+
     void OnMouseDown()
-    {   if(!connect)
+    {   
         isDragging = true;
         offset = gameObject.transform.position - GetMouseWorldPosition();
     }
@@ -22,10 +25,10 @@ public class ObjectDrag : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
+        GameManager.Instance.Drag = false;
         if (!connect)
-        { 
-            GetComponent<Rigidbody>().isKinematic = false;
-            Neighbor.GetComponent<Rigidbody>().isKinematic = false;
+        {
+            Die();
         }
 
     }
@@ -40,6 +43,7 @@ public class ObjectDrag : MonoBehaviour
             newPosition.y = Mathf.Clamp(newPosition.y, Min_Y, Max_Y);
             gameObject.transform.position = newPosition;
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
+            GameManager.Instance.Drag = true;
         }
 
     }
@@ -53,6 +57,12 @@ public class ObjectDrag : MonoBehaviour
     {
         Min_Y = this.transform.position.y;
         Max_Y = Neighbor.transform.localPosition.y+Add_Max_Y;
+    }
+    public void Die()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        Neighbor.GetComponent<Rigidbody>().isKinematic = false;
+        FinalEvent.Invoke();
     }
 }
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -19,14 +19,29 @@ public class GameManager : MonoBehaviour
     }
     public GameObject L_Hand;
     public GameObject R_Hand;
+
     private void Awake()
     {
         _instance = this;
-        L_Hand = GameObject.FindGameObjectWithTag("L_hand");
-        R_Hand = GameObject.FindGameObjectWithTag("R_hand");
     }
+    #region Stamina
+    public Slider Stamina;
+    private float NormalStamina = 1;
+    private float DragStamina = 2.5f;
+    [HideInInspector]
+    public bool Drag;
+    #endregion
     void Update()
     {
-        
+        if(Drag)
+        Stamina.value -= DragStamina * Time.deltaTime;
+    else
+        Stamina.value -= NormalStamina * Time.deltaTime;
+        if (Stamina.value == 0)
+        {
+            R_Hand.GetComponent<ObjectDrag>().Die();
+            L_Hand.GetComponent<ObjectDrag>().Die();
+        }
+
     }
 }
