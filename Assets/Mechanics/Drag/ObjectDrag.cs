@@ -12,10 +12,10 @@ public class ObjectDrag : MonoBehaviour
     private Vector3 offset;
     public float Max_Y, Min_Y;
     public float Max_X, Min_X;
-    public float Add_Max_Y;
+    public float Add_Max_Y, Add_Max_X;
     public ObjectDrag Neighbor;
     public UnityEvent FinalEvent;
-
+    public Transform P;
     void OnMouseDown()
     {   
         isDragging = true;
@@ -38,12 +38,13 @@ public class ObjectDrag : MonoBehaviour
         {
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             Vector3 newPosition = GetMouseWorldPosition() + offset;
-            newPosition.x = Mathf.Min(newPosition.x, Max_X);
-            newPosition.x = Mathf.Max(newPosition.x, Min_X);
             newPosition.y = Mathf.Clamp(newPosition.y, Min_Y, Max_Y);
-            gameObject.transform.position = newPosition;
+            newPosition.x = Mathf.Clamp(newPosition.x, Mathf.Min(Min_X, Max_X), Mathf.Max(Min_X, Max_X));
+            gameObject.transform.position= newPosition;
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             GameManager.Instance.Drag = true;
+            Min_X = P.transform.position.x;
+            Max_X = Min_X + Add_Max_X;
         }
 
     }
@@ -55,8 +56,12 @@ public class ObjectDrag : MonoBehaviour
     }
     public void Increase_Next_Point_Limit()
     {
+        
+        float Neighbor_Y = Neighbor.transform.localPosition.y;
+        if (this.transform.position.y!= Neighbor_Y + Add_Max_Y&& this.transform.position.y< Neighbor_Y)
         Min_Y = this.transform.position.y;
-        Max_Y = Neighbor.transform.localPosition.y+Add_Max_Y;
+        Max_Y = Neighbor_Y + Add_Max_Y;
+       
     }
     public void Die()
     {
@@ -64,5 +69,6 @@ public class ObjectDrag : MonoBehaviour
         Neighbor.GetComponent<Rigidbody>().isKinematic = false;
         FinalEvent.Invoke();
     }
+
 }
 
