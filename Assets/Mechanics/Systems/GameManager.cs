@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool Drag;
     #endregion
+    public bool IsDie = false;
     void Update()
     {
         if(Drag)

@@ -66,6 +66,8 @@ public class ObjectDrag : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = false;
         Neighbor.GetComponent<Rigidbody>().isKinematic = false;
         FinalEvent.Invoke();
+        GameManager.Instance.gameObject.GetComponent<ScoreManager>().SaveHighScore();
+        GameManager.Instance.IsDie = true;
     }
 
 }
