@@ -58,8 +58,8 @@ public class ObjectDrag : MonoBehaviour
 
         Min_X = P.transform.position.x;
         Max_X = Min_X + Add_Max_X;
-        Min_Y = P.transform.position.y - Add_Max_Y;
-        Max_Y = Min_Y + 2 * Add_Max_Y;
+        Min_Y = P.transform.localPosition.y - Add_Max_Y;
+        Max_Y = Min_Y + 2.3f * Add_Max_Y;
     }
     public void Die()
     {

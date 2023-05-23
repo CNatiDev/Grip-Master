@@ -16,8 +16,7 @@ public class Anchor_P : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"{Distance_Between_Neighbor} > {Vector3.Distance(anchor_Point.position, neighbor_Point.position)}");
-        //if (Distance_Between_Neighbor > Vector3.Distance(anchor_Point.position, neighbor_Point.position))
+       // if (Distance_Between_Neighbor > Vector3.Distance(anchor_Point.position, neighbor_Point.position))
         transform.position = new Vector3(anchor_Point.position.x, anchor_Point.position.y, -11);
         transform.rotation = Quaternion.EulerAngles(0, 0, 0);
     }
