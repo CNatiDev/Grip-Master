@@ -7,7 +7,6 @@ public class ObjectDrag : MonoBehaviour
 {
     [HideInInspector]
     public bool isDragging = false;
-    [HideInInspector]
     public bool connect = false;
     private Vector3 offset;
     public float Max_Y, Min_Y;
