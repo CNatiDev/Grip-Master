@@ -9,9 +9,9 @@ public class LoadNewWall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("L_hand")|| other.gameObject.CompareTag("R_hand"))
         {
+            if (!FirstWall)
+            Destroy(GameManager.Instance.GetComponent<ProceduralGenerator>().LastWall_2);
             GameManager.Instance.GetComponent<ProceduralGenerator>().LoadWall();
-            if(!FirstWall)
-            Destroy(GameManager.Instance.GetComponent<ProceduralGenerator>().LastWall);
             this.gameObject.SetActive(false);
         }
     }

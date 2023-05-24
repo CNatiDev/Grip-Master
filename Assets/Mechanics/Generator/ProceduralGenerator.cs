@@ -1,16 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProceduralGenerator : MonoBehaviour
 {
-    public GameObject Prefab;
+    public GameObject prefab;
     public GameObject LastWall;
-    public float Add_Y;
+    public GameObject LastWall_2;
+    public float addY;
+
     public void LoadWall()
     {
-        Vector3 Position = new Vector3(LastWall.transform.position.x, LastWall.transform.position.y + Add_Y, LastWall.transform.position.z);
-        LastWall = Instantiate(Prefab, Position, Quaternion.identity);
+        Vector3 position = Vector3.zero;
 
+        if (LastWall != null)
+            position = LastWall.transform.position + new Vector3(0f, addY, 0f);
+        LastWall_2 = LastWall;
+        LastWall = Instantiate(prefab, position, Quaternion.identity);
     }
 }
+

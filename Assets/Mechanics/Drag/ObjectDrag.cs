@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 public class ObjectDrag : MonoBehaviour
 {
     [HideInInspector]
@@ -15,10 +16,13 @@ public class ObjectDrag : MonoBehaviour
     public ObjectDrag Neighbor;
     public UnityEvent FinalEvent;
     public Transform P;
+ 
     void OnMouseDown()
     {   
         isDragging = true;
         offset = gameObject.transform.position - GetMouseWorldPosition();
+        GetComponent<Rigidbody>().isKinematic = true;
+        connect = false;
     }
 
     void OnMouseUp()
@@ -27,20 +31,19 @@ public class ObjectDrag : MonoBehaviour
         GameManager.Instance.Drag = false;
         if (!connect)
         {
-            Die();
+            GetComponent<Rigidbody>().isKinematic = false;
         }
+
 
     }
     void OnMouseDrag()
     {
         if (isDragging)
         {
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             Vector3 newPosition = GetMouseWorldPosition() + offset;
             newPosition.y = Mathf.Clamp(newPosition.y, Min_Y, Max_Y);
             newPosition.x = Mathf.Clamp(newPosition.x, Mathf.Min(Min_X, Max_X), Mathf.Max(Min_X, Max_X));
             gameObject.transform.position= newPosition;
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             GameManager.Instance.Drag = true;
             Increase_Next_Point_Limit();
         }
@@ -68,6 +71,11 @@ public class ObjectDrag : MonoBehaviour
         GameManager.Instance.gameObject.GetComponent<ScoreManager>().SaveHighScore();
         GameManager.Instance.IsDie = true;
     }
-
+    private void Update()
+    {
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
+        if (!connect && !Neighbor.connect)
+            Die();
+    }
 }
 
