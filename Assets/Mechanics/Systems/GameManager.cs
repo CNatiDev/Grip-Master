@@ -24,24 +24,52 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
     }
-    #region Stamina
+    #region Stamina_Parameters
     public Slider Stamina;
-    private float NormalStamina = 1;
+    [HideInInspector]
+    public float NormalStamina = 1;
+    [HideInInspector]
     private float DragStamina = 2.5f;
     [HideInInspector]
     public bool Drag;
+    [HideInInspector]
+    public bool IsCatch;
+    [HideInInspector]
+    public float OldStamina = 0;
+    [HideInInspector]
+    public bool Add_Stamina = false;
+    [HideInInspector]
+    public float Stamina_Quantity = 20;
     #endregion
+    public bool IsDie = false;
+    
     void Update()
     {
+        #region STAMINA
+        if (!Add_Stamina)
         if(Drag)
-        Stamina.value -= DragStamina * Time.deltaTime;
-    else
-        Stamina.value -= NormalStamina * Time.deltaTime;
+            Stamina.value -= DragStamina * Time.deltaTime;
+        else
+            Stamina.value -= NormalStamina * Time.deltaTime;
         if (Stamina.value == 0)
         {
             R_Hand.GetComponent<ObjectDrag>().Die();
             L_Hand.GetComponent<ObjectDrag>().Die();
         }
+        if (Add_Stamina)
+        {
+            AddStaminaOnSlider(); 
+        }
+        #endregion
+    }
+
+    public void AddStaminaOnSlider()
+    {
+
+            if (Stamina.value > OldStamina + Stamina_Quantity||Stamina.value ==100)
+                Add_Stamina = false;
+            else
+                Stamina.value += 5 * Time.deltaTime;
 
     }
 }
