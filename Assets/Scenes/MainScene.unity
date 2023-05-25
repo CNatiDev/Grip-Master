@@ -2472,6 +2472,7 @@ MonoBehaviour:
   Player_Height: {fileID: 1866847231}
   ScoreText: {fileID: 859562760}
   HighScoreText: {fileID: 1925347291}
+  score: 0
 --- !u!114 &284112337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3043,7 +3044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
-  connect: 1
+  connect: 0
   Max_Y: 4
   Min_Y: 2.5
   Max_X: -0.5
@@ -3103,6 +3104,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   P: {fileID: 1181628013}
+  Hand_Grip: {fileID: 926970656}
 --- !u!4 &335326447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 664225682729510700, guid: b8efb41c4ad14ea68df82d85a67b9f97, type: 3}
@@ -11659,6 +11661,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   P: {fileID: 336547861}
+  Hand_Grip: {fileID: 1370163531}
 --- !u!1 &1497738152
 GameObject:
   m_ObjectHideFlags: 0
@@ -12427,7 +12430,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607703302}
-  m_LocalRotation: {x: 0.13029791, y: 0.0639884, z: -0.008427119, w: 0.989372}
+  m_LocalRotation: {x: 0.13029791, y: 0.063988425, z: -0.008427122, w: 0.989372}
   m_LocalPosition: {x: -2.81, y: 4.4632177, z: -22.81829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
