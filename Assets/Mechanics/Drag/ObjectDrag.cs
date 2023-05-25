@@ -70,6 +70,9 @@ public class ObjectDrag : MonoBehaviour
         FinalEvent.Invoke();
         GameManager.Instance.gameObject.GetComponent<ScoreManager>().SaveHighScore();
         GameManager.Instance.IsDie = true;
+        ScoreManager Score_M = FindObjectOfType<ScoreManager>();
+        float score = Score_M.score;
+        TinySauce.OnGameFinished(score);
     }
     private void Update()
     {

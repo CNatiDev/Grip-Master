@@ -10,7 +10,7 @@ public class Settings : MonoBehaviour
     public Slider Main_Slider;
     public Slider SFX_Slider;
     private void Start()
-    {
+    {   
         if (PlayerPrefs.HasKey("Main"))
         {
             Main.SetFloat("Main", PlayerPrefs.GetFloat("Main"));

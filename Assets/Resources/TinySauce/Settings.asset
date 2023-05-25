@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa11ec82e9746928e211e7f096812ca, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  gameAnalyticsIosGameKey: 
+  gameAnalyticsIosSecretKey: 
+  gameAnalyticsAndroidGameKey: 76a265b59d7f4db2534ceba2de91f2ca
+  gameAnalyticsAndroidSecretKey: 9270b9bb7891b15bdc25fc2528a3ce0bad8a290e
+  facebookAppId: 273127088455931
+  facebookClientToken: a27311d7ffab47e7cab2722ae5238586
+  adjustIOSToken: 
+  adjustAndroidToken: ihhfdj3w7hts
+  EditorIdfa: 81ebea0e-4f8e-4c30-b4cf-11246b6cbe42
+  UseRemoteConfig: 0
+  UseVoodooAnalytics: 1
+  companyName: Bluehope Studios
+  privacyPolicyURL: https://docs.google.com/document/d/1qnQEEzeCeOrr5ja9H8N0zorgkfJOgOwpIw_JOZCT87E/edit?usp=sharing
+  developerContactEmail: cabau.natan.dev@gmail.com

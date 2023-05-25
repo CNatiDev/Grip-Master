@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public LevelHeight Player_Height;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI HighScoreText;
+    public float score = 0;
     private void Start()
     {
         LoadHighScore();
@@ -24,10 +25,14 @@ public class ScoreManager : MonoBehaviour
     {
         playerHeight = Player_Height.transform.position.y;
         // Assuming you have a formula to calculate the score based on the player's height
-        float score = playerHeight * 10f;
-        int integerScore = Mathf.FloorToInt(score); // Convert to integer
+
         if (!GameManager.Instance.IsDie)
-        ScoreText.text = integerScore.ToString();
+        {
+            score = playerHeight * 10f;
+            int integerScore = Mathf.FloorToInt(score);
+            ScoreText.text = integerScore.ToString();
+
+        } // Convert to integer
         if (score > highScore)
         {
             highScore = score;

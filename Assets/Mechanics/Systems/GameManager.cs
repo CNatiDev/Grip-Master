@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Voodoo.Tiny;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -42,7 +43,10 @@ public class GameManager : MonoBehaviour
     public float Stamina_Quantity = 20;
     #endregion
     public bool IsDie = false;
-    
+    private void Start()
+    {
+        TinySauce.OnGameStarted();
+    }
     void Update()
     {
         #region STAMINA
