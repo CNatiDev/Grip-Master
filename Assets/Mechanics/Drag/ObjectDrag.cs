@@ -16,7 +16,7 @@ public class ObjectDrag : MonoBehaviour
     public ObjectDrag Neighbor;
     public UnityEvent FinalEvent;
     public Transform P;
- 
+    public Transform Hand_Grip;
     void OnMouseDown()
     {   
         isDragging = true;
@@ -46,6 +46,7 @@ public class ObjectDrag : MonoBehaviour
             gameObject.transform.position= newPosition;
             GameManager.Instance.Drag = true;
             Increase_Next_Point_Limit();
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
         }
 
     }
@@ -73,7 +74,8 @@ public class ObjectDrag : MonoBehaviour
     }
     private void Update()
     {
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
+        if (!isDragging&&!GetComponent<Rigidbody>().isKinematic)
+            this.transform.position = new Vector3(Hand_Grip.position.x, Hand_Grip.position.y, Hand_Grip.position.z);
         if (!connect && !Neighbor.connect)
             Die();
     }
