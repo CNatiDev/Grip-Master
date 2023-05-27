@@ -16,8 +16,8 @@ MonoBehaviour:
   gameAnalyticsIosSecretKey: 
   gameAnalyticsAndroidGameKey: 76a265b59d7f4db2534ceba2de91f2ca
   gameAnalyticsAndroidSecretKey: 9270b9bb7891b15bdc25fc2528a3ce0bad8a290e
-  facebookAppId: 273127088455931
-  facebookClientToken: a27311d7ffab47e7cab2722ae5238586
+  facebookAppId: 977521250069343
+  facebookClientToken: 9ca8c6de1deeda28eba7b9ae366ebab2
   adjustIOSToken: 
   adjustAndroidToken: ihhfdj3w7hts
   EditorIdfa: 81ebea0e-4f8e-4c30-b4cf-11246b6cbe42

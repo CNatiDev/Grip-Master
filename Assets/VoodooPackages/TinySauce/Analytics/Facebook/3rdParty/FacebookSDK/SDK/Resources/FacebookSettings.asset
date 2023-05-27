@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - a27311d7ffab47e7cab2722ae5238586
+  - 9ca8c6de1deeda28eba7b9ae366ebab2
   appIds:
-  - 273127088455931
+  - 977521250069343
   appLabels:
   - Grip Master
   cookie: 1

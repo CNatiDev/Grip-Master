@@ -18,7 +18,8 @@ public class ObjectDrag : MonoBehaviour
     public Transform P;
     public Transform Hand_Grip;
     void OnMouseDown()
-    {   
+    {
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
         isDragging = true;
         offset = gameObject.transform.position - GetMouseWorldPosition();
         GetComponent<Rigidbody>().isKinematic = true;
@@ -40,6 +41,7 @@ public class ObjectDrag : MonoBehaviour
     {
         if (isDragging)
         {
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -11);
             Vector3 newPosition = GetMouseWorldPosition() + offset;
             newPosition.y = Mathf.Clamp(newPosition.y, Min_Y, Max_Y);
             newPosition.x = Mathf.Clamp(newPosition.x, Mathf.Min(Min_X, Max_X), Mathf.Max(Min_X, Max_X));
